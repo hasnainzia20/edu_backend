@@ -1,0 +1,21 @@
+# Node modules
+node_modules/
+
+
+# Local environment files
+.env
+.DS_Store
+*.log
+
+# Tailwind generated files (if you rebuild them locally)
+tailwind.css
+dist/
+
+# Optional caches
+.cache/
+.tmp/
+
+# OS/IDE files
+.vscode/
+.idea/
+Thumbs.db
