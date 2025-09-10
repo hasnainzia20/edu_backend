@@ -8,7 +8,10 @@ import userRoutes from "./routes/userRoutes.js";
 import courseRoutes from "./routes/courseRoutes.js";
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({ origin: "https://edu-frontend-chi.vercel.app/", credentials: true })
+);
+
 app.use(express.json());
 
 mongoose
