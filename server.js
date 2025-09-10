@@ -7,25 +7,14 @@ dotenv.config();
 import userRoutes from "./routes/userRoutes.js";
 import courseRoutes from "./routes/courseRoutes.js";
 
-// app.use(
-//   cors({
-//     origin: "https://edu-frontend-chi.vercel.app",
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     allowedHeaders: ["Content-Type", "Authorization"],
-//     credentials: true,
-//   })
-// );
-
-app.use(cors());
+const corsOptions = {
+  origin: "https://edu-frontend-chi.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
 
 const app = express();
-app.options(
-  "*",
-  cors({
-    origin: "https://edu-frontend-chi.vercel.app",
-    credentials: true,
-  })
-);
+app.options("/api/*", cors(corsOptions));
 
 app.use(express.json());
 
@@ -34,8 +23,8 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log(err));
 
-app.use("/api/users", userRoutes);
-app.use("/api/courses", courseRoutes);
+app.use("/api/users", cors(corsOptions), userRoutes);
+app.use("/api/courses", cors(corsOptions), courseRoutes);
 app.use("/uploads", express.static("uploads"));
 
 app.listen(process.env.PORT || 5000, () => console.log("Server running"));
