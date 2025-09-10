@@ -7,15 +7,18 @@ dotenv.config();
 import userRoutes from "./routes/userRoutes.js";
 import courseRoutes from "./routes/courseRoutes.js";
 
+// app.use(
+//   cors({
+//     origin: "https://edu-frontend-chi.vercel.app",
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//     credentials: true,
+//   })
+// );
+
+app.use(cors());
+
 const app = express();
-app.use(
-  cors({
-    origin: "https://edu-frontend-chi.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
 app.options(
   "*",
   cors({
