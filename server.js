@@ -10,9 +10,16 @@ import courseRoutes from "./routes/courseRoutes.js";
 const app = express();
 app.use(
   cors({
-    origin: "https://edu-frontend-chi.vercel.app/",
+    origin: "https://edu-frontend-chi.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
+app.options(
+  "*",
+  cors({
+    origin: "https://edu-frontend-chi.vercel.app",
     credentials: true,
   })
 );
